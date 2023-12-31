@@ -1,0 +1,5 @@
+*.ipynb
+mci.html
+*.pyc
+.env
+.DS_Store
