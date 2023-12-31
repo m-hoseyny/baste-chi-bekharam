@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <title>چه بسته‌ای بخرم؟</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans+Arabic' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-z0VWdD723ZkinW6m+pNpG5ICp7YKMhXk0nVUn/yql8fBpBhQ5IkW4wCEqZ+Yq2x237s58sYzPBQxL6K8zg=="></link>
+
+</head>
+<body>
+    <header class="container-fluid bg-light py-3 mb-5">
+        <h1 class="text-center fw-bold">چه بسته‌ای بخرم؟</h1>
+    </header>
+
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <h2 class="mb-4">محاسبه بسته‌های مناسب</h2>
+                <form method="POST" class="mb-4">
+                    <div class="mb-3">
+                        <label for="usage" class="form-label">میزان مصرف خودتون رو برای یک ماه به گیگابایت وارد کنید:</label>
+                        <input type="number" class="form-control" id="usage" name="usage" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="isp" class="form-label">اپراتور همراه رو انتخاب کنید</label>
+                        <select class="form-select" id="isp" name="isp" required>
+                            {% for isp in isps %}
+                            <option value="{{ isp }}">{{ isp }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">محاسبه</button>
+                </form>
+
+                <div id="results" class="mt-4"></div>
+            </div>
+
+            <div class="col-md-6 col-12">
+                    <h2>محاسبه‌گر بهترین ترکیب بسته‌های همراه</h2>
+                    <p>در این محاسبه گر شما میتونید بر اساس میزان مصرف خودتون، بهترین ترکیب بسته‌ای در طول دوره یک ماهه را برای اپراتورهای همراه دریافت کنید</p>
+                    <p>
+                        <li>
+                        تمام بسته‌ها به همراه قیمت‌های جدیدشون داخل سیستم قرار گرفتند.
+                        </li>
+                        <li>
+                        بسته‌های شبانه داخل سیستم در نظر گرفته نمی‌شوند.
+                        </li>
+                        <li>
+                        فعلا دو اپراتور اصلی ایرانسل و همراه اول پشتیبانی می‌شوند.
+                        </li>
+                        <li>
+                        دوره محاسبه به صورت ماهانه است (سیستم بهترین ترکیب برای استفاده ۳۰ روز را می‌دهد)
+                        </li>
+                    </p>
+                        <h2>نحوه‌ی کار</h2>
+                        <p>با استفاده از linear programming solver تمام بسته‌های موجود داخل دو اپراتور به سیستم داده شده است و بر اساس حجم ماهانه مصرفی، سیستم بهترین ترکیب بسته را به شما می‌دهد.</p>
+                        <p>
+                            این پروژه به صورت متن باز داخل گیت‌هاب قرار داده شده است.
+                        </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="container-fluid bg-light py-3 text-center">
+        <div class="social-links">
+            <a href="https://twitter.com/3yedAmjad">تویتر
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a href="https://github.com/m-hoseyny/baste-chi-bekharam">گیت‌هاب
+              <i class="fa fa-github"></i>
+            </a>
+          </div>
+          
+    </footer>
+
+    <script>
+        const form = document.querySelector("form");
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            fetch("/calculate", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("results").innerHTML = data;
+            });
+        });
+    </script>
+</body>
+</html>

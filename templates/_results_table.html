@@ -1,0 +1,29 @@
+<div class="container d-flex flex-column align-items-center justify-content-center h-100">
+    <table class="table">
+        <thead dir="rtl">
+            <tr>
+                <th>نام بسته</th>
+                <th>حجم (GB)</th>
+                <th>تعداد مورد نیاز در ماه</th>
+                <th>قیمت (با مالیات)</th>
+            </tr>
+        </thead>
+        <tbody dir="rtl">
+            {% for package in optimal_combination %}
+            <tr>
+                <td>بسته {{ package["duration"] }} روزه</td>
+                <td>{{ ((package["volume"] * package["count"]) / 1024)|int }} گیگابایت</td>
+                <td>{{ package["count"] }}</td>
+                <td>{{ (package["price"] * package["count"])|round|int }}</td>
+            </tr>
+            {% endfor %}
+
+            <tr class="table-success">
+                <td >مجموع</td>
+                <td>{{ total_volume }} گیگابایت</td>
+                <td>{{ total_purchases|int }}</td>
+                <td>{{ total_price|round }} تومان</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
