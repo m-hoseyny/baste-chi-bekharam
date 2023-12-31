@@ -19,11 +19,6 @@
 17,mci_thirty-days_4.0,30,28600,4096,False,,*100*2#,monthly
 18,mci_thirty-days_5.0,30,31700,5120,False,,*100*2#,monthly
 19,mci_thirty-days_6.0,30,37000,6144,False,,*100*2#,monthly
-20,mci_thirty-days_2.0,30,10400,2048,False,,*100*6#,new-sub
-21,mci_thirty-days_3.0,30,12400,3072,False,,*100*6#,new-sub
-22,mci_thirty-days_5.0,30,15400,5120,False,,*100*6#,new-sub
-23,mci_thirty-days_7.0,30,18400,7168,False,,*100*6#,new-sub
-24,mci_thirty-days_12.0,30,13400,12288,True,,*100*33#,sobhanet
 25,mci_unlimited-monthly_0.0,30,26600,0,True,,*100*33#,unlimited
 26,mci_unsorted-one-day_3.0,1,13300,3072,False,,*100*3#,short-time
 27,mci_unsorted-seven-days_6.0,7,26300,6144,False,,*100*3#,short-time
