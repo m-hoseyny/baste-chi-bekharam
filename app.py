@@ -48,7 +48,7 @@ def calculator(usage, duration, isp):
                 chosen_package = packages[i].copy()
                 chosen_package.update({'count': x[i].solution_value()})
                 total_purchase += x[i].solution_value()
-                total_volume += packages[i]['volume']
+                total_volume += (packages[i]['volume'] * x[i].solution_value())
                 # print(f"  {x[i].solution_value()} package(s) of type {packages[i]['name']}")
                 result['packages'].append(chosen_package)
         result.update({'total_purchase': total_purchase, 'total_volume': total_volume})
@@ -75,7 +75,7 @@ def calculate():
     
     results = calculator(usage=usage, duration=30, isp=isp)
     optimal_combination = results['packages']
-
+    print(optimal_combination)
     total_price = results['total_price']
     total_purchases = results['total_purchase']
     total_volume = float(results['total_volume'] / 1024)
@@ -85,4 +85,4 @@ def calculate():
 load_isp_data()
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=8000, debug=True)
