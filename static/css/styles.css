@@ -1,13 +1,14 @@
-/* @font-face {
-    font-family: 'Noto Sans';
-    src: url('static/fonts/NotoSansArabic-Regular.ttf') format('truetype');
+@font-face {
+    font-family: 'Noto Sans Arabic';
+    src: url('NotoSansArabic-VariableFont_wdth,wght.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
-} */
+}
 
 body {
     text-align: center;
     font-family: 'Noto Sans Arabic', sans-serif;
+    
 }
 .main .row {
     margin-top: -1em;
@@ -78,10 +79,21 @@ tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+main {
+    flex: 1;  /* Expand to fill available space */
+  }
 
 footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
+    margin-top: auto;  /* Pushes the footer to the bottom */
     width: 100%;
   }
 
