@@ -73,7 +73,7 @@ def calculate():
     usage = int(request.form["usage"])
     isp = request.form["isp"]
     
-    results = calculator(usage=usage, duration=30, isp=isp)
+    results = calculator(usage=usage, duration=28, isp=isp)
     optimal_combination = results['packages']
     print(optimal_combination)
     total_price = results['total_price']
