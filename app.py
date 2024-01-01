@@ -63,11 +63,9 @@ def calculate():
     for other_isp in ISP_PACKAGES:
         if other_isp == isp:
             continue
-        print(other_isp)
         results = give_best_package_combination(usage=usage, duration=28, isp=other_isp)
         other_isps.append({'isp': get_isp_name(other_isp), 'total_price': results['total_price']})
     other_isps = sorted(other_isps, key=lambda d: d['total_price']) 
-    print(other_isps)
     return render_template("_results_table.html", optimal_combination=optimal_combination, total_price=total_price, total_purchases=total_purchases, total_volume=total_volume, other_isps=other_isps)
 
 
