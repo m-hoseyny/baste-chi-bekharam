@@ -12,8 +12,8 @@ isp_name_mapper = {
     'mci': 'MCI - همراه‌اول',
     'mtn': 'MTN - ایرانسل',
     'taliya': 'Taliya - تالیا',
-    'aptel_daemi': 'آپتل دايمی',
-    'aptel_etebari': 'آپتل اعتباری',
+    'aptel': 'آپتل', # The same price
+    # 'aptel_etebari': 'آپتل اعتباری',
     'samantel': 'سامانتل',
     'shatel': 'شاتل موبایل',
     'rightel': 'رایتل'
