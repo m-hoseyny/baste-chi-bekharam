@@ -1,4 +1,5 @@
 <div class="container d-flex flex-column align-items-center justify-content-center h-100">
+    <h3>بهترین ترکیب برای دوره زمانی ۲۸ روزه</h3>
     <table class="table">
         <thead dir="rtl">
             <tr>
@@ -14,7 +15,7 @@
                 <td>بسته {{ package["duration"] }} روزه</td>
                 <td>{{ ((package["volume"]) / 1024)|int }} گیگابایت</td>
                 <td>{{ package["count"]|int }}</td>
-                <td>{{ (package["price"] )|round|int }}</td>
+                <td>{{ (package["price"] )|round|int|humanize('intcomma') }}</td>
             </tr>
             {% endfor %}
 
@@ -22,8 +23,28 @@
                 <td >مجموع</td>
                 <td>{{ total_volume }} گیگابایت</td>
                 <td>{{ total_purchases|int }}</td>
-                <td>{{ total_price|round }} تومان</td>
+                <td>{{ total_price|round|int|humanize('intcomma') }} تومان</td>
             </tr>
+        </tbody>
+    </table>
+</div>
+<hr/>
+<div class="container d-flex flex-column align-items-center justify-content-center h-100">
+    <h5>دیگر اپراتور‌ها (کمترین به بیشترین)</h5>
+    <table class="table">
+        <thead dir="rtl">
+            <tr>
+                <th>اپراتور</th>
+                <th>قیمت تمام شده (با مالیات)</th>
+            </tr>
+        </thead>
+        <tbody dir="rtl">
+            {% for other in other_isps %}
+            <tr>
+                <td>{{ other["isp"] }}</td>
+                <td>{{ ((other["total_price"]))|int|humanize('intcomma') }} تومان</td>
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
