@@ -1,6 +1,6 @@
 import pandas as pd
 import pickle
-import os
+import os, tqdm
 from ortools.linear_solver import pywraplp
 
 TIME_INTERVAL = 28
@@ -75,9 +75,10 @@ def best_package_combination_finder(usage, duration, packages):
 def best_packages_combination(isp_packages):
     best_combinations = {}
     for isp, packages in isp_packages.items():
+        print(f'Best combination for {isp}')
         if isp not in best_combinations:
                 best_combinations[isp] = {}
-        for usage in range(TOTAL_USAGE_LIMIT):
+        for usage in tqdm.tqdm(range(TOTAL_USAGE_LIMIT), desc=isp):
             result = best_package_combination_finder(usage, TIME_INTERVAL, packages)
             best_combinations[isp][usage] = result
     return best_combinations

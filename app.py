@@ -8,7 +8,13 @@ ISP_PACKAGES = {}
 
 isp_name_mapper = {
     'mci': 'MCI - همراه‌اول',
-    'mtn': 'MTN - ایرانسل'
+    'mtn': 'MTN - ایرانسل',
+    'taliya': 'Taliya - تالیا',
+    'aptel_daemi': 'آپتل دايمی',
+    'aptel_etebari': 'آپتل اعتباری',
+    'samantel': 'سامانتل',
+    'shatel': 'شاتل موبایل',
+    'rightel': 'رایتل'
 }
 
 
